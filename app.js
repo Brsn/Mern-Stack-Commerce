@@ -13,9 +13,7 @@ mongoose.connect(process.env.DATABASE, {
     .then(console.log("Connected"))
     .catch(error => handleError(error));
 
-app.get('/', (req, res) => {
-    res.send('hello from node');
-});
+app.use();
 
 const port = process.env.PORT || 8000;
 
