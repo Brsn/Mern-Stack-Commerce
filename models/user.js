@@ -41,5 +41,20 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('password').set(function (password) {
     this._password = password
     this.salt = uuid1()
+    this.hashed_password = this.encrpytPassword(password)
 })
-    .get()
+    .get(function () {
+        return this._password
+    })
+
+userSchema.methods = {
+    encryptPassword: function (password) {
+        if (!password) return '';
+        try {
+            return crpyto.createHmac('sha1', this.salt).update(password).digest('hex');
+        }
+        catch (err) {
+            return "";
+        }
+    }
+}
