@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 //saving user creditentals to cookies
 const cookieParser = require('cookie-parser');
+const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 require('dotenv').config();
@@ -21,7 +22,7 @@ app.use(morgan('dev'));
 //gets json data from the app body
 app.use(bodyParser.json());
 app.use(cookieParser());
-
+app.use(expressValidator());
 
 //app.use(userRoutes);
 app.use("/api", userRoutes);
