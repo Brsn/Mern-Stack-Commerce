@@ -20,6 +20,9 @@ mongoose.connect(process.env.DATABASE, {
 app.use(morgan('dev'));
 //gets json data from the app body
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+
 //app.use(userRoutes);
 app.use("/api", userRoutes);
 
