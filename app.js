@@ -26,6 +26,7 @@ app.use(expressValidator());
 
 //app.use(userRoutes);
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 
 const port = process.env.PORT || 8000;
 
